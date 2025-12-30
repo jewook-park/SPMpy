@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spmpy"
+version = "0.1.0"
+description = "SPMpy: STM/SPM data loading and analysis toolkit (internal Stage-1)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "BSD-3-Clause" }
+authors = [
+  { name = "Jewook Park", email = "parkj1@ornl.gov" }
+]
+
+# IMPORTANT:
+# Keep dependencies MINIMAL at Stage-1.
+# Heavy/optional stacks are handled via env_check notebook.
+dependencies = [
+  "numpy",
+  "xarray",
+  "matplotlib"
+]
+
+[project.optional-dependencies]
+# Optional groups for later stages (not enforced now)
+viz = [
+  "holoviews",
+  "panel",
+  "hvplot",
+  "plotly",
+  "bokeh"
+]
+
+io = [
+  "netCDF4",
+  "h5netcdf"
+]
+
+ml = [
+  "torch",
+  "scikit-learn"
+]
+
+[tool.setuptools]
+packages = ["spmpy"]
+
+[tool.setuptools.package-data]
+# Include non-Python files if added later
+spmpy = ["py.typed"]
